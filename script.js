@@ -2,6 +2,7 @@ var em = document.getElementById("login");
 var pas = document.getElementById("password");
 let er = document.getElementById("err");
 let regexp = /^([A-Za-z0-9\.-]+)@([A-Za-z0-9]+)\.([a-z]{2,3})(.[a-z]{2,3})?$/
+var phoneno = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;    
 
 // login
 
@@ -38,6 +39,7 @@ var city = document.getElementById("city");
 var ph = document.getElementById("phone");
 var pass1 = document.getElementById("pass1");
 var pass2 = document.getElementById("pass2");
+var phoneno = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;    
 
 function validate2() {
     if (f1.value.trim() == "" || l1.value.trim() == "" || e1.value.trim() == "" || pass1.value == "" || pass2.value == "" || ph.value.trim() == "" || city.value.trim() == "") {
@@ -60,34 +62,77 @@ function validate2() {
         alert("Password doesnot match");
         return false;
     }
+    else if (phoneno.test(ph.value) === false){
+        alert("Phone Number must be in Format");
+        return false;
+    }
 
     else {
         return true;
     }
 }
 
-var meter = document.getElementById('password-strength-meter');
-var text1 = document.getElementById('password-strength-text');
-let strongPassword = new RegExp("^(?=.{8,})(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*\\W).*$", "g");
-let mediumPassword = new RegExp("^(?=.{6,})(((?=.*[A-Z])(?=.*[a-z]))|((?=.*[A-Z])(?=.*[0-9]))|((?=.*[a-z])(?=.*[0-9]))).*$", "g");
-let weakPassword = new RegExp("(?=.{6,}).*", "g");
-var enoughRegex = new RegExp("(?=.{6,}).*", "g");
+function CheckPasswordStrength(password) {
+    var password_strength = document.getElementById("password_strength");
 
-pass1.addEventListener('input', function () {
-    var val = pass1.value;
-    var result = zxcvbn(val);
-    meter.value = result.score;
-
-    if (false == enoughRegex.test(val)) {
-        strength.innerHTML = 'More Characters';}
-else    if (strongPassword.test(val)) {
-        text1.innerHTML = '<span style="color:green">Strong!</span>';
-        meter.value=4;
-    } else if (mediumPassword.test(val)) {
-        text1.innerHTML = '<span style="color:orange">Medium!</span>';
-        meter.value=2;
-    } else  {
-        text1.innerHTML = '<span style="color:red">Weak!</span>';
-        meter.value=1;
+    //TextBox left blank.
+    if (password.length == 0) {
+        password_strength.innerHTML = "";
+        return;
     }
-});
+
+    //Regular Expressions.
+    var regex = new Array();
+    regex.push("[A-Z]"); //Uppercase Alphabet.
+    regex.push("[a-z]"); //Lowercase Alphabet.
+    regex.push("[0-9]"); //Digit.
+    regex.push("[$@$!%*#?&]"); //Special Character.
+
+    var passed = 0;
+
+    //Validate for each Regular Expression.
+    for (var i = 0; i < regex.length; i++) {
+        if (new RegExp(regex[i]).test(password)) {
+            passed++;
+        }
+    }
+
+    //Validate for length of Password.
+    if (passed >= 1 && password.length > 8) {
+        passed++;
+    }
+
+    //Display status.
+    var color = "";
+    var strength = "";
+    if (password.length > 7) {
+        switch (passed) {
+            case 0:
+            case 1:
+                strength = "Weak";
+                color = "orange";
+                break;
+            case 2:
+                strength = "Good";
+                color = "yellow";
+                break;
+            case 3:
+            case 4:
+                strength = "Strong";
+                color = "green";
+                break;
+            case 5:
+                strength = "Very Strong";
+                color = "darkgreen";
+                break;
+        }
+    }
+    else {
+        strength = "Minimum 8 characters needed";
+        color = "red";
+    }
+    password_strength.innerHTML = strength;
+    password_strength.style.color = color;
+}
+
+

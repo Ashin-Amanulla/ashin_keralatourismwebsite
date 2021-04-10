@@ -15,7 +15,14 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/zxcvbn/4.2.0/zxcvbn.js"></script>
 </head>
 <style>
-
+    body {
+        margin: 0%;
+        padding: 0%;
+        background-image: url('https://wallpaperaccess.com/full/1635203.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
+    }
 </style>
 
 <body>
@@ -31,7 +38,7 @@
                         <h4 class="card-title mt-2">Sign up</h4>
                     </header>
                     <article class="card-body">
-                        <form action="/index.html" onsubmit="return validate2()">
+                        <form action="index.html" onsubmit="return validate2()">
                             <div class="form-row">
                                 <!------------------------------------------------first name----------------------------------->
 
@@ -55,7 +62,7 @@
                             <div class="form-group">
                                 <!--------------------------------------------------------------phone number----------------------------------->
                                 <label>Phone Number</label>
-                                <input type="test" id="phone" class="form-control" placeholder="">
+                                <input type="test" id="phone" class="form-control" placeholder=""onkeyup="CheckPhonenumber(this.value)">
                                 <small class="form-text text-muted">We'll never share your phone number with anyone
                                     else.</small>
                             </div> <!-- form-group end.// -->
@@ -94,9 +101,9 @@
 
                             <div class="form-group">
                                 <label>Create password</label>
-                                <input class="form-control" id="pass1" type="password">
-                                <meter max="4" id="password-strength-meter"></meter>
-                                <span id="password-strength-text"></span>
+                                <input class="form-control popup" id="pass1" type="password" onkeyup="CheckPasswordStrength(this.value)" >
+                                <!-- <meter min="1" max="4"  id="my-meter"></meter> -->
+                                <span class="popuptext" id="password_strength"></span>
                             </div> <!-- form-group end.// -->
 
                             <!----------------------------------------------------password confirm---------------------------------------------->
