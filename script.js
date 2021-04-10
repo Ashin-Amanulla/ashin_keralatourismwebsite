@@ -2,9 +2,9 @@ var em = document.getElementById("login");
 var pas = document.getElementById("password");
 let er = document.getElementById("err");
 let regexp = /^([A-Za-z0-9\.-]+)@([A-Za-z0-9]+)\.([a-z]{2,3})(.[a-z]{2,3})?$/
-var phoneno = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;    
+var phoneno = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
 
-// login
+// ---------------------------------------------------------Login Form------------------------------------------------//
 
 function validate() {
 
@@ -30,7 +30,7 @@ function validate() {
 
 }
 
-// Sign IN
+// ---------------------------------------------------------Sign Up Form------------------------------------------------//
 
 var f1 = document.getElementById("fn");
 var l1 = document.getElementById("ln");
@@ -39,7 +39,7 @@ var city = document.getElementById("city");
 var ph = document.getElementById("phone");
 var pass1 = document.getElementById("pass1");
 var pass2 = document.getElementById("pass2");
-var phoneno = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;    
+var phoneno = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
 
 function validate2() {
     if (f1.value.trim() == "" || l1.value.trim() == "" || e1.value.trim() == "" || pass1.value == "" || pass2.value == "" || ph.value.trim() == "" || city.value.trim() == "") {
@@ -62,7 +62,7 @@ function validate2() {
         alert("Password doesnot match");
         return false;
     }
-    else if (phoneno.test(ph.value) === false){
+    else if (phoneno.test(ph.value) === false) {
         alert("Phone Number must be in Format");
         return false;
     }
@@ -71,6 +71,8 @@ function validate2() {
         return true;
     }
 }
+
+// ---------------------------------------------------------password Strength Meter------------------------------------------------//
 
 function CheckPasswordStrength(password) {
     var password_strength = document.getElementById("password_strength");
