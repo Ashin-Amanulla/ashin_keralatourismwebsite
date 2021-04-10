@@ -14,33 +14,39 @@
 <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/fontAwesome.css">
+<style>
+    body {
+        background-image: url('img/parambi.jpg');
+
+    }
+</style>
 
 <body>
+        <!--------------------------------------------Login--------------------------------------- -->
+        <div class="wrapper fadeInDown">
+            <div id="formContent">
+                <!-- Tabs Titles -->
 
-    <!--------------------------------------------Login--------------------------------------- -->
-    <div class="wrapper fadeInDown">
-        <div id="formContent">
-            <!-- Tabs Titles -->
-
-            <!-- Icon -->
-            <div class="fadeIn first">
-                <i class="fa fa-user-circle-o py-5 " style="font-size: 100px;" id=icon alt="User Icon"></i>
-            </div>
-
-            <!-- Login Form -->
-            <form action="index.html" onsubmit="return validate()">
-                <input type="text" id="login" class="fadeIn second" name="login" placeholder="login">
-                <input type="password" id="password" class="fadeIn third" name="login" placeholder="password">
-                <br>
-                <label for="text" id="err"></label><br>
-                <input type="submit" class="fadeIn fourth" value="Log In">
-                <!-- Remind Passowrd -->
-                <div id="formFooter">
-                    <a class="underlineHover" href="#">Forgot Password?</a>
+                <!-- Icon -->
+                <div class="fadeIn first">
+                    <i class="fa fa-user-circle-o py-5 " style="font-size: 100px;" id=icon alt="User Icon"></i>
                 </div>
-            </form>
+
+                <!-- Login Form -->
+                <form action="index.html" onsubmit="return validate()">
+                    <input type="text" id="login" class="fadeIn second" name="login" placeholder="login">
+                    <input type="password" id="password" class="fadeIn third" name="login" placeholder="password">
+                    <br>
+                    <label for="text" id="err"></label><br>
+                    <input type="submit" class="fadeIn fourth" style="cursor: pointer;" value="Log In">
+                    <!-- Remind Passowrd -->
+                    <div id="formFooter">
+                        <a class="underlineHover" href="#">Forgot Password?</a>
+                        <a class="underlineHover" href="signup.html">Sign Up</a>
+                    </div>
+                </form>
+            </div>
         </div>
-    </div>
     <script src="script.js"></script>
 </body>
 

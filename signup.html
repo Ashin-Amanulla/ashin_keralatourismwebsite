@@ -11,6 +11,8 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link rel="stylesheet" href="css/fontAwesome.css">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="css/sign.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/zxcvbn/4.2.0/zxcvbn.js"></script>
 </head>
 <style>
 
@@ -31,48 +33,50 @@
                     <article class="card-body">
                         <form action="/index.html" onsubmit="return validate2()">
                             <div class="form-row">
+                                <!------------------------------------------------first name----------------------------------->
+
                                 <div class="col form-group">
-                                    <!------------------------------------------------first name----------------------------------->
                                     <label>First name </label>
                                     <input type="text" id="fn" class="form-control" placeholder="">
                                 </div> <!-- form-group end.// -->
-
+                                <!-----------------------------------------------------last name------------------------------->
                                 <div class="col form-group">
-                                    <!-----------------------------------------------------last name------------------------------->
                                     <label>Last name</label>
                                     <input type="text" id="ln" class="form-control" placeholder=" ">
                                 </div> <!-- form-group end.// -->
                             </div> <!-- form-row end.// -->
-
-
+                            <!--------------------------------------------------------------email----------------------------------->
                             <div class="form-group">
-                                <!--------------------------------------------------------------email----------------------------------->
                                 <label>Email address</label>
                                 <input type="text" id="email" class="form-control" placeholder="">
                                 <small class="form-text text-muted">We'll never share your email with anyone
                                     else.</small>
                             </div> <!-- form-group end.// -->
-
+                            <div class="form-group">
+                                <!--------------------------------------------------------------phone number----------------------------------->
+                                <label>Phone Number</label>
+                                <input type="test" id="phone" class="form-control" placeholder="">
+                                <small class="form-text text-muted">We'll never share your phone number with anyone
+                                    else.</small>
+                            </div> <!-- form-group end.// -->
                             <div class="form-group">
                                 <!-----------------------------------------------------------gender---------------------------------->
                                 <label class="form-check form-check-inline">
-                                    <input class="form-check-input"  type="radio" name="gender"
-                                        value="option1">
-                                    <span class="form-check-label"> Male </span>
+                                    <input class="form-check-input" type="radio" name="gender" value="option1" checked>
+                                    <span 4class="form-check-label"> Male </span>
                                 </label>
                                 <label class="form-check form-check-inline">
-                                    <input class="form-check-input"  type="radio" name="gender"
-                                        value="option2">
+                                    <input class="form-check-input" type="radio" name="gender" value="option2">
                                     <span class="form-check-label"> Female</span>
                                 </label>
-
                             </div> <!-- form-group end.// -->
+                            <!-----------------------------------------------------------city---------------------------------->
                             <div class="form-row">
                                 <div class="form-group col-md-6">
                                     <label>City</label>
-                                    <input type="text" class="form-control">
-
+                                    <input type="text" id="city" class="form-control">
                                 </div> <!-- form-group end.// -->
+                                <!-----------------------------------------------------------city---------------------------------->
                                 <div class="form-group col-md-6">
                                     <label>Country</label>
                                     <select id="inputState" class="form-control">
@@ -83,16 +87,27 @@
                                         <option>USA</option>
                                         <option>Afganistan</option>
                                     </select>
-
                                 </div> <!-- form-group end.// -->
-
                             </div> <!-- form-row.// -->
 
+                            <!----------------------------------------------------password---------------------------------------------->
+
                             <div class="form-group">
-                                <!----------------------------------------------------password---------------------------------------------->
                                 <label>Create password</label>
                                 <input class="form-control" id="pass1" type="password">
+                                <meter max="4" id="password-strength-meter"></meter>
+                                <span id="password-strength-text"></span>
                             </div> <!-- form-group end.// -->
+
+                            <!----------------------------------------------------password confirm---------------------------------------------->
+
+
+                            <div class="form-group">
+                                <label>Confirm password</label>
+                                <input class="form-control" id="pass2" type="password">
+                            </div> <!-- form-group end.// -->
+
+                            <!----------------------------------------------------Submit--------------------------------------------->
 
                             <div class="form-group">
                                 <button type="submit" class="btn btn-primary btn-block"> Register </button>
