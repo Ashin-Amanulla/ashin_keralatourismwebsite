@@ -50,7 +50,7 @@ var pass2 = document.getElementById("pass2");
 var phoneno = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
 
 function validate2() {
-    if (f1.value.trim() == "" || l1.value.trim() == "" || e1.value.trim() == "" || pass1.value == "" || pass2.value == "" || ph.value.trim() == "" || city.value.trim() == ""|| pass1.value <8  || document.getElementById("password_strength").innerHTML=="weak") {
+    if (f1.value.trim() == "" || l1.value.trim() == "" || e1.value.trim() == "" || pass1.value == "" || pass2.value == "" || ph.value.trim() == "" || city.value.trim() == "" || pass1.value < 8 || document.getElementById("password_strength").innerHTML == "weak") {
         f1.style.border = f1.value.trim() == "" ? "2px solid red" : '';
         l1.style.border = l1.value.trim() == "" ? "2px solid red" : '';
         e1.style.border = e1.value.trim() == "" ? "2px solid red" : '';
@@ -74,7 +74,7 @@ function validate2() {
         alert("Phone Number must be in Format");
         return false;
     }
-    else if (!new RegExp(regex[0]).test(pass1.value) || !new RegExp(regex[1]).test(pass1.value) || !new RegExp(regex[2]).test(pass1.value)){
+    else if (!new RegExp(regex[0]).test(pass1.value) || !new RegExp(regex[1]).test(pass1.value) || !new RegExp(regex[2]).test(pass1.value)) {
         alert("Password must contain atleast one uppercase, one lower case and one number");
         return false;
     }
@@ -143,6 +143,4 @@ function CheckPasswordStrength(password) {
     password_strength.innerHTML = strength;
     password_strength.style.color = color;
 }
-
-
 
