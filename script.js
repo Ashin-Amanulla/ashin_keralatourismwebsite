@@ -63,7 +63,7 @@ function validate2() {
     }
 
     else if (regexp.test(e1.value) === false) {
-        alert("Email must be in Format");
+        alert("Email must be in Format ");
         return false;
     }
     else if (pass1.value != pass2.value) {
@@ -71,7 +71,7 @@ function validate2() {
         return false;
     }
     else if (phoneno.test(ph.value) === false) {
-        alert("Phone Number must be in Format");
+        alert("Phone Number must be in Format  eg: xxxxxxxxxx or xxx.xxx.xxxx or xxx xxx xxxx or xxx-xxx-xxxx");
         return false;
     }
     else if (!new RegExp(regex[0]).test(pass1.value) || !new RegExp(regex[1]).test(pass1.value) || !new RegExp(regex[2]).test(pass1.value)) {
