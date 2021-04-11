@@ -1,8 +1,16 @@
 var em = document.getElementById("login");
 var pas = document.getElementById("password");
 let er = document.getElementById("err");
-let regexp = /^([A-Za-z0-9\.-]+)@([A-Za-z0-9]+)\.([a-z]{2,3})(.[a-z]{2,3})?$/
-var phoneno = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
+let regexp = /^([A-Za-z0-9\.-]+)@([A-Za-z0-9]+)\.([a-z]{2,3})(.[a-z]{2,3})?$/ //email validator//
+var phoneno = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/; //phone validator//
+
+//password validator//
+var regex = new Array();
+regex.push("[A-Z]"); //Uppercase Alphabet.
+regex.push("[a-z]"); //Lowercase Alphabet.
+regex.push("[0-9]"); //Digit.
+regex.push("[$@$!%*#?&]"); //Special Character.
+
 
 // ---------------------------------------------------------Login Form------------------------------------------------//
 
@@ -42,7 +50,7 @@ var pass2 = document.getElementById("pass2");
 var phoneno = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
 
 function validate2() {
-    if (f1.value.trim() == "" || l1.value.trim() == "" || e1.value.trim() == "" || pass1.value == "" || pass2.value == "" || ph.value.trim() == "" || city.value.trim() == "") {
+    if (f1.value.trim() == "" || l1.value.trim() == "" || e1.value.trim() == "" || pass1.value == "" || pass2.value == "" || ph.value.trim() == "" || city.value.trim() == ""|| pass1.value <8  || document.getElementById("password_strength").innerHTML=="weak") {
         f1.style.border = f1.value.trim() == "" ? "2px solid red" : '';
         l1.style.border = l1.value.trim() == "" ? "2px solid red" : '';
         e1.style.border = e1.value.trim() == "" ? "2px solid red" : '';
@@ -66,6 +74,10 @@ function validate2() {
         alert("Phone Number must be in Format");
         return false;
     }
+    else if (!new RegExp(regex[0]).test(pass1.value) || !new RegExp(regex[1]).test(pass1.value) || !new RegExp(regex[2]).test(pass1.value)){
+        alert("Password must contain atleast one uppercase, one lower case and one number");
+        return false;
+    }
 
     else {
         return true;
@@ -84,16 +96,11 @@ function CheckPasswordStrength(password) {
     }
 
     //Regular Expressions.
-    var regex = new Array();
-    regex.push("[A-Z]"); //Uppercase Alphabet.
-    regex.push("[a-z]"); //Lowercase Alphabet.
-    regex.push("[0-9]"); //Digit.
-    regex.push("[$@$!%*#?&]"); //Special Character.
 
     var passed = 0;
 
     //Validate for each Regular Expression.
-    for (var i = 0; i < regex.length; i++) {
+    for (var i = 0; i < regex.length - 1; i++) {
         if (new RegExp(regex[i]).test(password)) {
             passed++;
         }
@@ -136,5 +143,6 @@ function CheckPasswordStrength(password) {
     password_strength.innerHTML = strength;
     password_strength.style.color = color;
 }
+
 
 
